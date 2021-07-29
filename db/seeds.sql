@@ -9,10 +9,10 @@ VALUES
 INSERT INTO role (title, salary, department_id)
 VALUES
     ('accountant', 30.00, 5),
-    ('associate', 15.00, 10),
+    ('associate', 15.00, 2),
     ('manager', 35.00, 1),
     ('assistant', 20.00, 2),
-    ('courier', 10.00, 6);
+    ('courier', 10.00, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES

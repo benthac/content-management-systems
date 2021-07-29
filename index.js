@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const db = require('./db/connection');
-
+const cTable = require('console.table');
 
 const questions = [
     {
@@ -19,22 +19,22 @@ const questions = [
             'Quit'
         ],
     },
-]
+];
 
 function viewDepartments() {
     db.promise().query(`SELECT * FROM department`).then(([rows, fields]) => {
     console.table(rows);
-    }).then(init())};
+    }).then(() => init())};
 
 function viewRoles() {
     db.promise().query(`SELECT * FROM role`).then(([rows, fields]) => {
     console.table(rows);
-    }).then(init())};
+    }).then(() => init())};
 
 function viewEmployees() {
     db.promise().query(`SELECT * FROM employee`).then(([rows, fields]) => {
     console.table(rows);
-    }).then(init())};
+    }).then(() => init())};
 
 function addDepartment() {
     let sql = `INSERT INTO department (id, name)
@@ -62,9 +62,9 @@ function addRoles() {
 
 function addEmployee() {
     let sql = `INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
-    VALUES (?,?,?,?,?)`;
-let params = [];
-db.query(sql, params, (err, result) => {
+        VALUES (?,?,?,?,?)`;
+    let params = [];
+    db.query(sql, params, (err, result) => {
     if (err) {
         console.log(err);
     }
@@ -73,16 +73,19 @@ db.query(sql, params, (err, result) => {
 
 };
 
-function init() {
-    inquirer.prompt(questions).then((answers) => {
-        switch (answers.options){
-            case "View all departments":
+function updateRole() {
+
+};
+
+const init = function () {inquirer.prompt(questions).then((answers) => {
+    switch (answers.options){
+        case "View all departments":
                 viewDepartments() 
                 break
-            case "View all roles":
+        case "View all roles":
                 viewRoles() 
                 break
-            case "View all employees":
+        case "View all employees":
                 viewEmployees() 
                 break
                 }
@@ -90,4 +93,4 @@ function init() {
     }
     )};
 
-init();
+ init();
