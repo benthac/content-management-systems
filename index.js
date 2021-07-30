@@ -40,38 +40,27 @@ function addDepartment() {
     let sql = `INSERT INTO department (id, name)
         VALUES (?,?)`;
     let params = [];
-    db.query(sql, params, (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-        console.log(result);
-    });
-};
+    db.promise().query(sql, params, (err, result).then(([])) => {
+       console.table(rows);
+    }).then(() => init())};
 
 function addRoles() {
     let sql = `INSERT INTO role (id, title, salary, department)
         VALUES (?,?,?,?)`;
     let params = [];
-    db.query(sql, params, (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-        console.log(result);
-    });
-};
+    db.promise().query(sql, params, (err, result).then(([])) => {
+        console.table(rows);
+    }).then(() => init())};
 
 function addEmployee() {
     let sql = `INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
         VALUES (?,?,?,?,?)`;
     let params = [];
-    db.query(sql, params, (err, result) => {
-    if (err) {
-        console.log(err);
-    }
-    console.log(result);
-});
+    db.promise().query(sql, params, (err, result).then(([])) => {
+        console.table(rows);
+    }).then(() => init())};
 
-};
+
 
 function updateRole() {
 
